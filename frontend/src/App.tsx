@@ -1,4 +1,4 @@
-import { BsHouse } from "react-icons/bs"
+import { BsHouse, BsMap } from "react-icons/bs"
 import { Link, Outlet } from "react-router-dom"
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
           <label className="drawer-overlay" aria-label="close sidebar" htmlFor="sidebar"></label>
           <ul className="menu min-h-full w-80 p-4 bg-base-200 text-base-content ">
             <li><Link className="btn btn-ghost text-xl" to="/">Days</Link></li>
-            <li><Link to="/" ><BsHouse /> Overview</Link></li>
+            <li><Link to="/" ><BsHouse />Overview</Link></li>
+            <li><Link to="/track" ><BsMap />Track</Link></li>
           </ul>
         </nav>
       </div>
