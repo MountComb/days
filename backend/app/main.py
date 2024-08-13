@@ -1,6 +1,6 @@
 from datetime import date
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from pydantic_settings import BaseSettings
 import logging
 
@@ -43,7 +43,7 @@ async def get_notes(date: date, create: bool = False):
 
 
 @app.put("/notes/{date}")
-async def put_notes(date: date, note: str):
+async def put_notes(date: date, note: str = Body(..., media_type='text/markdown')):
     note_path = settings.data_path / f"{date}/note.md"
     if not note_path.parent.exists():
         note_path.parent.mkdir(parents=True)
