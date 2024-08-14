@@ -1,11 +1,30 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Link, LoaderFunction, useLoaderData } from "react-router-dom"
+import axios from "axios"
+
+
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 export const NotePageLoader = async function ({ params }) {
-    const date = params.date
+    if (!params.date) {
+        throw new Response(null, { status: 400 })
+    }
+    const date = new Date(params.date)
+    if (date.toISOString().slice(0, 10) !== params.date) {
+        throw new Response(null, { status: 400 })
+    }
+    const response = await axios.get(`${API_URL}/note/${params.date}`, {
+        validateStatus: function (status) { return status < 500; }
+    })
+    let note;
+    if (response.status === 200) {
+        note = response.data.note
+    } else {
+        note = "(Note not found for this date)"
+    }
     return {
         date: date,
-        note: "This is a note for " + date,
+        note: note,
     }
 } satisfies LoaderFunction
 
