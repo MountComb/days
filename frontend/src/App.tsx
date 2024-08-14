@@ -10,7 +10,7 @@ function App() {
           {/* <label aria-label="open sidebar" htmlFor="sidebar">open sidebar</label> */}
           <Outlet />
         </div>
-        <nav className="drawer-side">
+        <nav className="drawer-side border-r shadow-2xl">
           <label className="drawer-overlay" aria-label="close sidebar" htmlFor="sidebar"></label>
           <ul className="menu min-h-full w-80 p-4 bg-base-200 text-base-content ">
             <li><Link className="btn btn-ghost text-xl" to="/">Days</Link></li>
