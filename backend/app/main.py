@@ -1,6 +1,7 @@
 from datetime import date
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Body
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings
 import logging
 
@@ -18,6 +19,13 @@ app = FastAPI()
 if not settings.data_path.exists():
     settings.data_path.mkdir(parents=True)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
