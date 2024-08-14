@@ -12,7 +12,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App />} errorElement={<ErrorPage />}>
     <Route index element={<OverviewPage />} />
     <Route path='track/' element={<TrackPage />} />
-    <Route path='notes/:date' element={<NotePage />} loader={NotePageLoader} />
+    <Route path='note/:date' element={<NotePage />} loader={NotePageLoader} />
   </Route>
 )
 )

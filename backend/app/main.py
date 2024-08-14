@@ -29,8 +29,8 @@ async def get_settings():
     return settings.model_dump()
 
 
-@app.get("/notes/{date}")
-async def get_notes(date: date, create: bool = False):
+@app.get("/note/{date}")
+async def get_note(date: date, create: bool = False):
     note_path = settings.data_path / f"{date}/note.md"
     if note_path.exists():
         return {"note": note_path.read_text()}
@@ -42,8 +42,8 @@ async def get_notes(date: date, create: bool = False):
     raise HTTPException(status_code=404, detail="Note not found")
 
 
-@app.put("/notes/{date}")
-async def put_notes(date: date, note: str = Body(..., media_type='text/markdown')):
+@app.put("/note/{date}")
+async def put_note(date: date, note: str = Body(..., media_type='text/markdown')):
     note_path = settings.data_path / f"{date}/note.md"
     if not note_path.parent.exists():
         note_path.parent.mkdir(parents=True)
