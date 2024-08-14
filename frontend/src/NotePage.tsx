@@ -1,7 +1,7 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Link, LoaderFunction, useLoaderData } from "react-router-dom"
 import axios from "axios"
-
+import Markdown from 'react-markdown'
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
 
@@ -45,7 +45,7 @@ export default function NotePage() {
         </div>
 
         <main className="max-w-screen-xl mx-auto my-6 p-6 shadow-xl rounded-xl border">
-            <p>{note}</p>
+            <div className="prose max-w-none"><Markdown>{note}</Markdown></div>
         </main>
     </>)
 }
