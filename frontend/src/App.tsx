@@ -16,7 +16,7 @@ function App() {
             <li><Link className="btn btn-ghost text-xl" to="/">Days</Link></li>
             <li><Link to="/" ><FaHome />Overview</Link></li>
             <li><Link to="/track" ><FaMap />Track</Link></li>
-            <li><Link to="/notes/:date" ><FaFileAlt />Notes</Link></li>
+            <li><Link to={`/note/${new Date().toISOString().slice(0, 10)}`}><FaFileAlt />Note</Link></li>
           </ul>
         </nav>
       </div>
