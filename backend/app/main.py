@@ -27,6 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello World!"}
@@ -41,17 +42,19 @@ async def get_settings():
 async def get_note(date: date, create: bool = False):
     note_path = settings.data_path / f"{date}/note.md"
     if note_path.exists():
-        return {"note": note_path.read_text()}
-    if create:
+        note = note_path.read_text()
+    elif create:
         logging.debug(f"Creating note for {date}")
         note_path.parent.mkdir(parents=True, exist_ok=True)
         note_path.touch()
-        return {"note": ""}
-    raise HTTPException(status_code=404, detail="Note not found")
+        note = ""
+    else:
+        note = None
+    return {"note": note}
 
 
 @app.put("/note/{date}")
-async def put_note(date: date, note: str = Body(..., media_type='text/markdown')):
+async def put_note(date: date, note: str = Body(..., media_type="text/markdown")):
     note_path = settings.data_path / f"{date}/note.md"
     if not note_path.parent.exists():
         note_path.parent.mkdir(parents=True)

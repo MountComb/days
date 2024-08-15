@@ -14,15 +14,8 @@ export const NotePageLoader = async function ({ params }) {
     if (date.toISOString().slice(0, 10) !== params.date) {
         throw new Response(null, { status: 400 })
     }
-    const response = await axios.get(`${API_URL}/note/${params.date}`, {
-        validateStatus: function (status) { return status < 500; }
-    })
-    let note;
-    if (response.status === 200) {
-        note = response.data.note
-    } else {
-        note = "(Note not found for this date)"
-    }
+    const response = await axios.get(`${API_URL}/note/${params.date}`)
+    const note = response.data.note
     return {
         date: date,
         note: note,
@@ -46,7 +39,12 @@ export default function NotePage() {
         </div>
 
         <main className="max-w-screen-xl mx-auto my-6 p-6 shadow-xl rounded-xl border">
-            <div className="prose max-w-none"><Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown></div>
+            <div className="prose max-w-none">
+                {
+                    note === null ? <p className="text-center fg-base-300">No note for today</p> :
+                        <Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown>
+                }
+            </div>
         </main>
     </>)
 }
