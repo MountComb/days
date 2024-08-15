@@ -10,9 +10,11 @@ import NotePage, { NotePageLoader } from './NotePage.tsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App />} errorElement={<ErrorPage />}>
-    <Route index element={<OverviewPage />} />
-    <Route path='track/' element={<TrackPage />} />
-    <Route path='note/:date' element={<NotePage />} loader={NotePageLoader} />
+    <Route errorElement={<ErrorPage />}>
+      <Route index element={<OverviewPage />} />
+      <Route path='track/' element={<TrackPage />} />
+      <Route path='note/:date' element={<NotePage />} loader={NotePageLoader} />
+    </Route>
   </Route>
 )
 )
