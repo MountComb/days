@@ -30,7 +30,7 @@ export const NotePageLoader = async function ({ params }) {
 } satisfies LoaderFunction
 
 export default function NotePage() {
-    const { date, note } = useLoaderData() as ReturnType<typeof NotePageLoader>
+    const { date, note } = useLoaderData() as Awaited<ReturnType<typeof NotePageLoader>>
     const day_current = date.toISOString().slice(0, 10)
     const day_prev = new Date(date.valueOf() - 24 * 3600 * 1000).toISOString().slice(0, 10)
     const day_next = new Date(date.valueOf() + 24 * 3600 * 1000).toISOString().slice(0, 10)
