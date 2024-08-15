@@ -7,6 +7,7 @@ import './index.css'
 import OverviewPage from './OverviewPage.tsx'
 import TrackPage from './TrackPage.tsx'
 import NotePage, { NotePageLoader } from './NotePage.tsx'
+import NoteEditPage, { noteEditAction } from './NoteEditPage.tsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App />} errorElement={<ErrorPage />}>
@@ -14,6 +15,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route index element={<OverviewPage />} />
       <Route path='track/' element={<TrackPage />} />
       <Route path='note/:date' element={<NotePage />} loader={NotePageLoader} />
+      <Route path='note/:date/edit' element={<NoteEditPage />} loader={NotePageLoader} action={noteEditAction}/>
     </Route>
   </Route>
 )

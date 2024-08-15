@@ -45,6 +45,7 @@ export default function NotePage() {
                         <Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown>
                 }
             </div>
+            <Link to={`/note/${day_current}/edit`} className="btn btn-primary">Edit</Link>
         </main>
     </>)
 }
