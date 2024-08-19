@@ -1,4 +1,4 @@
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { FaChevronLeft, FaChevronRight, FaPen } from "react-icons/fa"
 import { Link, LoaderFunction, useLoaderData } from "react-router-dom"
 import axios from "axios"
 import Markdown from 'react-markdown'
@@ -38,14 +38,18 @@ export default function NotePage() {
             </div>
         </div>
 
-        <main className="max-w-screen-xl mx-auto my-6 p-6 shadow-xl rounded-xl border">
-            <div className="prose max-w-none">
-                {
-                    note === null ? <p className="text-center fg-base-300">No note for today</p> :
-                        <Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown>
-                }
+        <main className="card max-w-screen-xl mx-auto my-6 shadow-xl border">
+            <div className="card-body">
+                <div className="card-actions justify-end">
+                    <Link to={`/note/${day_current}/edit`} className="btn btn-circle"><FaPen /></Link>
+                </div>
+                <div className="prose max-w-none">
+                    {
+                        note === null ? <p className="text-center fg-base-300">No note for today</p> :
+                            <Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown>
+                    }
+                </div>
             </div>
-            <Link to={`/note/${day_current}/edit`} className="btn btn-primary">Edit</Link>
         </main>
     </>)
 }

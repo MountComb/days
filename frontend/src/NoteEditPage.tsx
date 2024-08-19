@@ -28,12 +28,15 @@ export default function NoteEditPage() {
             </div>
         </div>
 
-        <main className="max-w-screen-xl mx-auto my-6 p-6 shadow-xl rounded-xl border">
-            <Form method="post" id="contact-form">
-                <textarea name="note" className="w-full h-96" defaultValue={note} />
-                <input type="submit" className="btn btn-primary" value="Save" />
-            </Form>
-
+        <main className="card max-w-screen-xl mx-auto my-6 shadow-xl border">
+            <div className="card-body">
+                <Form method="post" id="contact-form" className="space-y-2">
+                    <textarea name="note" className="w-full h-96 p-2 rounded-md" defaultValue={note} />
+                    <div className="card-actions justify-end">
+                        <input type="submit" className="btn" value="Save" />
+                    </div>
+                </Form>
+            </div>
         </main>
     </>)
 }
