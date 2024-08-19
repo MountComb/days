@@ -12,7 +12,7 @@ export default function ErrorPage() {
                         <h1 className="text-5xl font-bold">Oops!</h1>
                         <p>An unexpected error has occurred.</p>
                         <p><Link to="/" className="btn">Back Home</Link></p>
-                        <pre className="text-left">{JSON.stringify(error, null, 2)}</pre>
+                        <pre className="text-left text-wrap break-all">{JSON.stringify(error, null, 2)}</pre>
                     </div>
                 </div>
             </div>
