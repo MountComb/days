@@ -60,3 +60,11 @@ async def put_note(date: date, note: str = Body(..., media_type="text/markdown")
         note_path.parent.mkdir(parents=True)
     note_path.write_text(note)
     return {"note": note}
+
+
+@app.delete("/note/{date}")
+async def delete_note(date: date):
+    note_path = settings.data_path / f"{date}/note.md"
+    if note_path.exists():
+        note_path.unlink()
+    return {"message": "Note deleted"}
