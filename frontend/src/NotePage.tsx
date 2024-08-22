@@ -36,14 +36,16 @@ export default function NotePage() {
             <Link to={`/note/${day_next}`} className="btn btn-ghost btn-circle"><FaChevronRight /></Link>
             <Link to={`/note/${day_current}/edit`} className="btn btn-ghost btn-circle"><FaPen /></Link>
         </>}>
-            <div className="card-body">
-                <div className="prose max-w-none">
-                    {
-                        note === null ? <p className="text-center fg-base-300">No note for today</p> :
-                            <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{note}</Markdown>
-                    }
+            <section className="card shadow-xl border">
+                <div className="card-body">
+                    <div className="prose max-w-none">
+                        {
+                            note === null ? <p className="text-center fg-base-300">No note for today</p> :
+                                <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{note}</Markdown>
+                        }
+                    </div>
                 </div>
-            </div>
+            </section>
         </PageTitle>
     </>)
 }

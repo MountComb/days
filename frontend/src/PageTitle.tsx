@@ -18,9 +18,7 @@ export default function PageTitle({ children, title, actions }: PageTitleProps) 
             </div>
         </nav>
         <main className="max-w-screen-xl mx-auto p-6 space-y-6">
-            <section className="card shadow-xl border">
-                {children}
-            </section>
+            {children}
         </main>
     </>)
 }

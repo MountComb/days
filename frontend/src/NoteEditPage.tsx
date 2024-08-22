@@ -24,14 +24,16 @@ export default function NoteEditPage() {
         <PageTitle title={`Editing note for ${day_current}`} actions={<>
             <Link to={`/note/${day_current}`} className="btn btn-ghost btn-circle"><FaTimes /></Link>
         </>} >
-            <div className="card-body">
-                <Form method="post" id="contact-form" className="space-y-2">
-                    <textarea name="note" className="w-full h-96 p-2 rounded-md" defaultValue={note} />
-                    <div className="card-actions justify-end">
-                        <input type="submit" className="btn" value="Save" />
-                    </div>
-                </Form>
-            </div>
+            <section className="card shadow-xl border">
+                <div className="card-body">
+                    <Form method="post" id="contact-form" className="space-y-2">
+                        <textarea name="note" className="w-full h-96 p-2 rounded-md" defaultValue={note} />
+                        <div className="card-actions justify-end">
+                            <input type="submit" className="btn" value="Save" />
+                        </div>
+                    </Form>
+                </div>
+            </section>
         </PageTitle>
     </>)
 }
