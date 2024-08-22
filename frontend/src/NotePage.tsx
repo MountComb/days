@@ -4,6 +4,7 @@ import axios from "axios"
 import Markdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from "remark-gfm"
+import PageTitle from "./PageTitle"
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
 
@@ -29,21 +30,13 @@ export default function NotePage() {
     const day_prev = new Date(date.valueOf() - 24 * 3600 * 1000).toISOString().slice(0, 10)
     const day_next = new Date(date.valueOf() + 24 * 3600 * 1000).toISOString().slice(0, 10)
     return (<>
-        <div className="navbar bg-base-200">
-            <div className="navbar-start">
-                <Link to={`/note/${day_prev}`} className="btn btn-ghost btn-circle"><FaChevronLeft /></Link>
-            </div>
-            <div className="navbar-center text-xl font-semibold"> {day_current}</div>
-            <div className="navbar-end">
-                <Link to={`/note/${day_next}`} className="btn btn-ghost btn-circle"><FaChevronRight /></Link>
-            </div>
-        </div>
 
-        <main className="card max-w-screen-xl mx-auto my-6 shadow-xl border">
+        <PageTitle title={day_current} actions={<>
+            <Link to={`/note/${day_prev}`} className="btn btn-ghost btn-circle"><FaChevronLeft /></Link>
+            <Link to={`/note/${day_next}`} className="btn btn-ghost btn-circle"><FaChevronRight /></Link>
+            <Link to={`/note/${day_current}/edit`} className="btn btn-ghost btn-circle"><FaPen /></Link>
+        </>}>
             <div className="card-body">
-                <div className="card-actions justify-end">
-                    <Link to={`/note/${day_current}/edit`} className="btn btn-circle"><FaPen /></Link>
-                </div>
                 <div className="prose max-w-none">
                     {
                         note === null ? <p className="text-center fg-base-300">No note for today</p> :
@@ -51,6 +44,6 @@ export default function NotePage() {
                     }
                 </div>
             </div>
-        </main>
+        </PageTitle>
     </>)
 }

@@ -2,6 +2,7 @@ import { FaTimes } from "react-icons/fa"
 import { Form, Link, redirect, useLoaderData } from "react-router-dom"
 import { NotePageLoader } from "./NotePage"
 import axios from "axios"
+import PageTitle from "./PageTitle";
 
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
@@ -20,15 +21,9 @@ export default function NoteEditPage() {
     const { date, note } = useLoaderData() as Awaited<ReturnType<typeof NotePageLoader>>
     const day_current = date.toISOString().slice(0, 10)
     return (<>
-        <div className="navbar bg-base-200">
-            <div className="navbar-start" />
-            <div className="navbar-center text-xl font-semibold"> Editing note for {day_current}</div>
-            <div className="navbar-end">
-                <Link to={`/note/${day_current}`} className="btn btn-ghost btn-circle"><FaTimes /></Link>
-            </div>
-        </div>
-
-        <main className="card max-w-screen-xl mx-auto my-6 shadow-xl border">
+        <PageTitle title={`Editing note for ${day_current}`} actions={<>
+            <Link to={`/note/${day_current}`} className="btn btn-ghost btn-circle"><FaTimes /></Link>
+        </>} >
             <div className="card-body">
                 <Form method="post" id="contact-form" className="space-y-2">
                     <textarea name="note" className="w-full h-96 p-2 rounded-md" defaultValue={note} />
@@ -37,6 +32,6 @@ export default function NoteEditPage() {
                     </div>
                 </Form>
             </div>
-        </main>
+        </PageTitle>
     </>)
 }

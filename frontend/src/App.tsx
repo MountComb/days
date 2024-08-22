@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom"
 function App() {
   return (
     <>
-      <div className="drawer drawer-open">
+      <div className="drawer">
         <input type="checkbox" id="sidebar" className="drawer-toggle" />
         <div className="drawer-content">
           {/* <label aria-label="open sidebar" htmlFor="sidebar">open sidebar</label> */}
