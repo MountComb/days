@@ -12,6 +12,11 @@ export async function noteEditAction({ request, params }: { request: Request, pa
     const note = form.get('note')
     const date = params.date
 
+    if (note === '') {
+        await axios.delete(`${API_URL}/note/${date}`)
+        return redirect(`/note/${date}`)
+    }
+
     await axios.put(`${API_URL}/note/${date}`, note)
     return redirect(`/note/${date}`)
 
