@@ -3,6 +3,7 @@ import { Link, LoaderFunction, useLoaderData } from "react-router-dom"
 import axios from "axios"
 import Markdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
+import remarkGfm from "remark-gfm"
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
 
@@ -46,7 +47,7 @@ export default function NotePage() {
                 <div className="prose max-w-none">
                     {
                         note === null ? <p className="text-center fg-base-300">No note for today</p> :
-                            <Markdown remarkPlugins={[remarkBreaks]}>{note}</Markdown>
+                            <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{note}</Markdown>
                     }
                 </div>
             </div>
