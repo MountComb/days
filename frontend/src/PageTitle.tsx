@@ -2,8 +2,8 @@ import { FaBars } from "react-icons/fa";
 
 type PageTitleProps = {
     children: React.ReactNode,
-    title: string,
-    actions: React.ReactNode,
+    title?: string,
+    actions?: React.ReactNode,
 }
 
 export default function PageTitle({ children, title, actions }: PageTitleProps) {
@@ -13,7 +13,7 @@ export default function PageTitle({ children, title, actions }: PageTitleProps) 
                 <div className="navbar-start">
                     <label aria-label="open sidebar" htmlFor="sidebar" className="btn btn-ghost btn-circle" ><FaBars /></label>
                 </div>
-                <div className="navbar-center text-xl font-semibold"> {title} </div>
+                <div className="navbar-center text-xl font-semibold"> {title ?? "Days"} </div>
                 <div className="navbar-end"> {actions} </div>
             </div>
         </nav>
