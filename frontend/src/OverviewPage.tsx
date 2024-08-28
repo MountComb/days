@@ -1,7 +1,9 @@
+import PageTitle from "./PageTitle";
+
 export default function OverviewPage() {
     return (
-        <main>
-            <div className="hero min-h-screen">
+        <PageTitle>
+            <div className="hero">
                 <div className="hero-content text-center">
                     <div className="max-w-lg">
                         <h1 className="text-5xl font-bold">Overview Page</h1>
@@ -11,6 +13,6 @@ export default function OverviewPage() {
                     </div>
                 </div>
             </div>
-        </main>
+        </PageTitle>
     )
 }

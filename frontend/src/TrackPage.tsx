@@ -1,9 +1,10 @@
 import { FaBuilding, FaHome, FaSubway, FaTree, FaWalking } from "react-icons/fa";
+import PageTitle from "./PageTitle";
 
 export default function TrackPage() {
     return (
-        <main>
-            <div className="hero min-h-screen">
+        <PageTitle>
+            <div className="hero">
                 <div className="hero-content text-center">
                     <div className="max-w-lg">
 
@@ -43,6 +44,6 @@ export default function TrackPage() {
                     </div>
                 </div>
             </div>
-        </main>
+        </PageTitle>
     )
 }
